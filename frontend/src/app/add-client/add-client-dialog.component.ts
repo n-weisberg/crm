@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { take } from 'rxjs';
 import { ClientsService, Client } from '../clients/clients.service';
 
 
@@ -28,8 +29,7 @@ import { ClientsService, Client } from '../clients/clients.service';
         Phone: this.clientFormGroup.value.phone,
         Address: this.propertyFormGroup.value.address,
       }
-      console.log(client);
-      this.clientService.addClient(client);
+      this.clientService.addClient(client).pipe(take(1)).subscribe();;
       return true;
     }
   }

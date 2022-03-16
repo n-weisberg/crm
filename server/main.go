@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"time"
 )
 
 type Employee struct {
@@ -40,11 +39,11 @@ var employees []Employee = []Employee{
 }
 
 func main() {
-	now := time.Now()
-	fmt.Println("The current datetime is:", now)
 	http.HandleFunc("/getClients", GetClients)
 	http.HandleFunc("/employees", Employees)
 	http.HandleFunc("/addClient", AddClient)
+	http.HandleFunc("/editClient", EditClient)
+	http.HandleFunc("/deleteClient", DeleteClient)
 	fmt.Println("Server started at port 3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))
 }

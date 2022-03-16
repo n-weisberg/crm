@@ -20,6 +20,15 @@ export interface Client {
   Status?: string;
 }
 
+export enum Status {
+  Lead = "Lead",
+  Estimate = "Estimate",
+  Booked = "Booked",
+  Archived = "Archived",
+  Rejected = "Rejected",
+  Complete = "Complete"
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,14 +44,25 @@ export class ClientsService {
 
   getClients(): Observable<Client[]> {
     var url = "http://localhost:3000/getClients";
-    this.http.get<Client[]>(url, {observe: 'body', responseType: 'json'}).subscribe(r => console.log(r));
     return this.http.get<Client[]>(url, {observe: 'body', responseType: 'json'});
   }
 
   addClient(client: Client): Observable<any> {
     var url = "http://localhost:3000/addClient";
     const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set('content-type', 'application/json');
-    this.http.post(url, client, {headers}).subscribe(r => console.log(r));
     return this.http.post(url, client);
   }
+
+  editClient(client: Client): Observable<any> {
+    var url = "http://localhost:3000/editClient";
+    const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set('content-type', 'application/json');
+    return this.http.post(url, client);
+  }
+
+  deleteClient(id: number): Observable<any> {
+    var url = "http://localhost:3000/deleteClient";
+    const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set('content-type', 'application/json');
+    return this.http.post(url, id);
+  }
+
 }

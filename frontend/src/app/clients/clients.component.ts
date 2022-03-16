@@ -4,26 +4,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Observable } from 'rxjs';
-import { ClientsService, Client } from './clients.service';
+import { ClientsService, Client, Status } from './clients.service';
 import { EditClientComponent } from './edit-client/edit-client.component';
-
-// export interface Client {
-//   Name: string;
-//   phone: number;
-//   address: string;
-//   recent: string;
-//   created: string;
-// }
-
-// const ELEMENT_DATA: Client[] = [
-//   {Name: 'James Cameron', phone: 4068508556, address: '141 5th Ave N, Saskatoon, SK', recent: 'Feb 28, 2022', created: 'Feb 28, 2022'},
-//   {Name: 'Alyanna Rabanal', phone: 3068508556, address: '241 5th Ave N, Saskatoon, SK', recent: 'Feb 28, 2022', created: 'Feb 28, 2022'},
-//   {Name: 'Nick Weisberg', phone: 5068508556, address: '541 5th Ave N, Saskatoon, SK', recent: 'Feb 28, 2022', created: 'Feb 28, 2022'},
-//   {Name: 'Marten Scorses', phone: 2068508556, address: '941 5th Ave N, Saskatoon, SK', recent: 'Feb 28, 2022', created: 'Feb 28, 2022'},
-//   {Name: 'Steven Speilburg', phone: 1068508556, address: '81 5th Ave N, Saskatoon, SK', recent: 'Feb 28, 2022', created: 'Feb 28, 2022'},
-//   {Name: 'Quentin Tarentino', phone: 7068508556, address: '41 5th Ave N, Saskatoon, SK', recent: 'Feb 28, 2022', created: 'Feb 28, 2022'},
-//   {Name: 'Chrstopher Nolan', phone: 8068508556, address: '541 5th Ave N, Saskatoon, SK', recent: 'Feb 28, 2022', created: 'Feb 28, 2022'}
-// ];
 
 @Component({
   selector: 'app-clients',
@@ -65,17 +47,28 @@ export class ClientsComponent implements OnInit {
   }
 
   filterTab(event: any) {
-    // if (!this.allClients) {
-    //   return this.allClients;
-    // }
-    let tab = event.tab.textLabel.trim().toLowerCase();
-    console.log(tab);
-    if (tab == "all clients") {
+    let tab = event.tab.textLabel.trim();
+    if (tab == "All Clients") {
       this.allClients.filter = "";
+      if (this.allClients.paginator) {
+        this.allClients.paginator.firstPage();
+      }
       return this.allClients;
     }
-    
-    this.allClients.filter = tab;
+    if (tab == "Leads") {
+      this.allClients.filter = Status.Lead;
+      if (this.allClients.paginator) {
+        this.allClients.paginator.firstPage();
+      }
+      return this.allClients;
+    }
+    if (tab == "Archived") {
+      this.allClients.filter = Status.Archived;
+      if (this.allClients.paginator) {
+        this.allClients.paginator.firstPage();
+      }
+      return this.allClients;
+    }
     if (this.allClients.paginator) {
       this.allClients.paginator.firstPage();
     }
@@ -87,10 +80,6 @@ export class ClientsComponent implements OnInit {
       data: {
         client: row,
       },
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

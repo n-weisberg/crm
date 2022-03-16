@@ -26,8 +26,11 @@ type Client struct {
 // }
 
 func GetClients(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "application/json")
 	rows, err := getClients()
 	if err != nil {
+		fmt.Println(err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
@@ -44,19 +47,17 @@ func GetClients(w http.ResponseWriter, r *http.Request) {
 	for rows.Next() {
 		err = rows.Scan(&id, &name, &phone, &address, &created, &status, &recent)
 		if err != nil {
+			fmt.Println(err)
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		fmt.Println(id, name)
-		_created, err := time.Parse("2006-01-02 03:04:05", created)
+		_created, err := time.Parse("2006-01-02 15:04:05.0000000", created)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
+			fmt.Println(err)
 		}
-		_recent, err := time.Parse("2006-01-02 03:04:05", recent)
+		_recent, err := time.Parse("2006-01-02 15:04:05.0000000", recent)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
+			fmt.Println(err)
 		}
 		var curr Client = Client{
 			Id:      id,
@@ -72,11 +73,10 @@ func GetClients(w http.ResponseWriter, r *http.Request) {
 
 	js, err := json.Marshal(allClients)
 	if err != nil {
+		fmt.Println(err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Content-Type", "application/json")
 	w.Write(js)
 }
 
@@ -94,10 +94,46 @@ func AddClient(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Println(client.Name)
 	client.Created = time.Now()
 	client.Recent = time.Now()
-	client.Status = "leads"
+	client.Status = "Lead"
 	insertClient(client)
+	w.WriteHeader(http.StatusOK)
+}
+
+func EditClient(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Content-Type", "application/json")
+	var client Client
+	if r.Method == "OPTIONS" {
+		return
+	}
+	err := json.NewDecoder(r.Body).Decode(&client)
+	if err != nil {
+		fmt.Println(err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	client.Recent = time.Now()
+	editClient(client)
+	w.WriteHeader(http.StatusOK)
+}
+
+func DeleteClient(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Content-Type", "application/json")
+	var id int
+	if r.Method == "OPTIONS" {
+		return
+	}
+	err := json.NewDecoder(r.Body).Decode(&id)
+	if err != nil {
+		fmt.Println(err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	deleteClient(id)
 	w.WriteHeader(http.StatusOK)
 }

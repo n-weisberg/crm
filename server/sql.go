@@ -41,3 +41,41 @@ func insertClient(client Client) {
 	}
 	return
 }
+
+func editClient(client Client) {
+	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/crm")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Connection Established")
+	}
+	defer db.Close()
+	stmt, err := db.Prepare("UPDATE client SET name=?,phone=?,address=?,recent=?,status=? WHERE id=?")
+	if err != nil {
+		fmt.Println(err)
+	}
+	_, err = stmt.Exec(client.Name, client.Phone, client.Address, client.Recent, client.Status, client.Id)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return
+}
+
+func deleteClient(id int) {
+	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/crm")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Connection Established")
+	}
+	defer db.Close()
+	stmt, err := db.Prepare("DELETE from client WHERE id=?")
+	if err != nil {
+		fmt.Println(err)
+	}
+	_, err = stmt.Exec(id)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return
+}

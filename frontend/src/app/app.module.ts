@@ -30,7 +30,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-import { EditClientComponent } from './clients/edit-client/edit-client.component';
+import { ConfirmDeleteClientDialog, EditClientComponent } from './clients/edit-client/edit-client.component';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 
 @NgModule({
@@ -43,6 +43,7 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     SettingsComponent,
     ScheduleComponent,
     EditClientComponent,
+    ConfirmDeleteClientDialog,
   ],
   imports: [
     BrowserModule,
