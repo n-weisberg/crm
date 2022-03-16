@@ -1,0 +1,33 @@
+:host {
+    height: 100%
+}
+
+.screen-container {
+    height: 100%;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.sidenav-button {
+    height: 60px;
+    width: 100%;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.sidenav {
+    padding: 1%
+}
+
+.list {
+    text-align: center;
+}
+
+.logo {
+    width: 100%;
+}

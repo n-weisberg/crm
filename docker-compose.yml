@@ -1,0 +1,10 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  angular-client:
+    build: ./frontend
+    ports:
+      - "4200:80"
+  golang-server:
+    build: ./server
+    ports:
+      - "8080:3000"

@@ -1,0 +1,230 @@
+<h1 class="page-title">Clients</h1>
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" (selectedTabChange)="filterTab($event)">
+  <mat-tab label="All Clients">
+    <mat-form-field appearance="standard" class="search">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="allClients" class="mat-elevation-z8" matSort>
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Recent">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Created">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
+      <td mat-cell *matCellDef="let element"> {{element.Created}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row mat-button (click)="openEditClient(row)" *matRowDef="let row; columns: displayedColumns;" class="client-row"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </mat-tab>
+
+  <mat-tab label="Leads">
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="allClients" class="mat-elevation-z8" matSort>
+  
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Recent">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Recent </th>
+      <td mat-cell *matCellDef="let element"> {{element.Recent}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Created">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
+      <td mat-cell *matCellDef="let element"> {{element.Created}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </mat-tab>
+
+  <mat-tab label="Estimates">
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="allClients" class="mat-elevation-z8" matSort>
+  
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Recent">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Recent </th>
+      <td mat-cell *matCellDef="let element"> {{element.Recent}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Created">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
+      <td mat-cell *matCellDef="let element"> {{element.Created}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </mat-tab>
+
+  <mat-tab label="Booked">
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="allClients" class="mat-elevation-z8" matSort>
+  
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Recent">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Recent </th>
+      <td mat-cell *matCellDef="let element"> {{element.Recent}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Created">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
+      <td mat-cell *matCellDef="let element"> {{element.Created}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </mat-tab>
+
+  <mat-tab label="Rejected">
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="allClients" class="mat-elevation-z8" matSort>
+  
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Recent">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Recent </th>
+      <td mat-cell *matCellDef="let element"> {{element.Recent}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Created">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
+      <td mat-cell *matCellDef="let element"> {{element.Created}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </mat-tab>
+
+  <mat-tab label="Archived">
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="allClients" class="mat-elevation-z8" matSort>
+  
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Recent">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Recent </th>
+      <td mat-cell *matCellDef="let element"> {{element.Recent}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Created">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
+      <td mat-cell *matCellDef="let element"> {{element.Created}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </mat-tab>
+</mat-tab-group>
+  

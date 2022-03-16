@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>New Lead</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="clientFormGroup">
+      <form [formGroup]="clientFormGroup">
+        <ng-template matStepLabel>Client</ng-template>
+        <div class="client-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="John Smith" formControlName="name">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="3061238765" formControlName="phone">
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="propertyFormGroup">
+      <form [formGroup]="propertyFormGroup">
+        <ng-template matStepLabel>Property</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address" placeholder="Ex. 1 Main St, New York, NY">
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Details</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" (click)="add()" cdkFocusInitial>Add Client</button>
+</mat-dialog-actions>

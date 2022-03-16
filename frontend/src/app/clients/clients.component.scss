@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+  }
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+.search {
+  padding: 0 1%;
+}
+
+.page-title {
+  margin: 3% 0% 3% 3%;
+}
+
+.client-row {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+  cursor: pointer;
+}

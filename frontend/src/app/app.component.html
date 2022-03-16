@@ -1,0 +1,48 @@
+<mat-toolbar>
+    <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <span>White Mountain Painting</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-drawer-container class="screen-container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="side" opened>
+      <img src="assets/logo1.png" class="logo">
+      <div class="button-container">
+        <button class="sidenav-button" color="primary" mat-raised-button (click)="openDialog()">
+            New Lead
+        </button>
+        <mat-list class="list">
+            <mat-divider></mat-divider>
+            <button class="sidenav-button" mat-button [routerLink]="['/dashboard']">
+                Dashboard
+            </button>
+            <mat-divider></mat-divider>
+            <button class="sidenav-button" mat-button [routerLink]="['/clients']">
+                Clients
+            </button>
+            <mat-divider></mat-divider>
+            <button class="sidenav-button" mat-button [routerLink]="['/schedule']">
+                Schedule
+            </button>
+            <mat-divider></mat-divider>
+            <button class="sidenav-button" mat-button [routerLink]="['/employees']">
+                Employees
+            </button>
+            <mat-divider></mat-divider>
+            <button class="sidenav-button" mat-button [routerLink]="['/settings']">
+                Settings
+            </button>
+        </mat-list>
+        
+    </div>
+    </mat-drawer>
+    <div class="screen-content">
+    </div>
+    <router-outlet></router-outlet>
+  </mat-drawer-container>
+
