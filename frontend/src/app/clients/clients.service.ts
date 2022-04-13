@@ -46,30 +46,30 @@ export class ClientsService {
   }
 
   getClients(): Observable<Client[]> {
-    var url = "http://localhost:8080/getClients";
+    var url = "http://35.224.208.80:8080/getClients";
     return this.http.get<Client[]>(url, {observe: 'body', responseType: 'json'});
   }
 
   addClient(client: Client): Observable<any> {
-    var url = "http://localhost:8080/addClient";
+    var url = "http://35.224.208.80:8080/addClient";
     const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set('content-type', 'application/json');
     return this.http.post(url, client);
   }
 
   editClient(client: Client): Observable<any> {
-    var url = "http://localhost:8080/editClient";
+    var url = "http://35.224.208.80:8080/editClient";
     const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set('content-type', 'application/json');
     return this.http.post(url, client);
   }
 
   deleteClient(id: number): Observable<any> {
-    var url = "http://localhost:8080/deleteClient";
+    var url = "http://35.224.208.80:8080/deleteClient";
     const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set('content-type', 'application/json');
     return this.http.post(url, id);
   }
 
   addEstimate(estimate: Estimate): Observable<any> {
-    var url = "http://localhost:8080/addEstimate";
+    var url = "http://35.224.208.80:8080/addEstimate";
     const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set('content-type', 'application/json');
     return this.http.post(url, estimate);
   }

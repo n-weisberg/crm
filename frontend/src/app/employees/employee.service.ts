@@ -24,7 +24,7 @@ export class EmployeeService {
   }
 
   getEmployees(): Observable<Employee[]> {
-    var url = "http://localhost:8080/employees";
+    var url = "http://35.224.208.80:8080/employees";
     // var options: = {responseType: "json"};
     console.log("test");
     this.http.get<Employee[]>(url, {observe: 'body', responseType: 'json'}).subscribe(r => console.log(r));
