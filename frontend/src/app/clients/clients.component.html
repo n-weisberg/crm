@@ -70,7 +70,7 @@
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row mat-button (click)="openEditClient(row)" *matRowDef="let row; columns: displayedColumns;" class="client-row"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </mat-tab>
@@ -108,7 +108,7 @@
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row mat-button (click)="openEditClient(row)" *matRowDef="let row; columns: displayedColumns;" class="client-row"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </mat-tab>
@@ -146,7 +146,7 @@
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row mat-button (click)="openEditClient(row)" *matRowDef="let row; columns: displayedColumns;" class="client-row"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </mat-tab>
@@ -184,7 +184,7 @@
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row mat-button (click)="openEditClient(row)" *matRowDef="let row; columns: displayedColumns;" class="client-row"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </mat-tab>
@@ -222,7 +222,7 @@
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row mat-button (click)="openEditClient(row)" *matRowDef="let row; columns: displayedColumns;" class="client-row"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </mat-tab>

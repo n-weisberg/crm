@@ -1,0 +1,46 @@
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="estimateFormGroup">
+        <div class="form-container">
+            <div class="form-column">
+                <ng-template>Client</ng-template>
+                <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <input matInput placeholder="Interior, exterior, etc" formControlName="type">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Amount</mat-label>
+                    <input matInput placeholder="2400" formControlName="amount">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Notes</mat-label>
+                    <input matInput placeholder="Last name, First name" formControlName="notes">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Created</mat-label>
+                    <input matInput readonly placeholder="Last name, First name" formControlName="created">
+                </mat-form-field>
+            </div>
+            <div class="form-column">
+                <ng-template>Client</ng-template>
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                <mat-form-field appearance="fill">
+                <mat-label>ID</mat-label>
+                <input matInput readonly formControlName="id">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Status</mat-label>
+                    <input matInput readonly formControlName="status">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Recent</mat-label>
+                    <input matInput readonly formControlName="recent">
+                </mat-form-field>
+            </div>
+        </div>
+      </form>
+</mat-dialog-content>

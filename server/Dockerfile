@@ -1,6 +1,6 @@
 FROM golang:1.16-alpine
 
-ENV GO111MODULE=off
+ENV GO111MODULE=on
 
 # Move to working directory /build
 WORKDIR /build

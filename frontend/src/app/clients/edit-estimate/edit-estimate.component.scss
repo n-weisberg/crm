@@ -1,0 +1,15 @@
+.form-column {
+    display: flex;
+    flex-direction: column;
+    margin: 0% 2.5% 5% 2.5%;
+}
+
+.form-container {
+    flex-direction: row;
+    display: flex;
+}
+
+mat-dialog-content {
+    margin: 0;
+    overflow: hidden;
+}

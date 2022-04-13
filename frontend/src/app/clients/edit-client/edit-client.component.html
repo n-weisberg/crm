@@ -1,4 +1,7 @@
 <h2 mat-dialog-title>{{ data.client.Name }}</h2>
+
+
+<div *ngIf="!showEstimate">
 <mat-dialog-content class="mat-typography">
     <form [formGroup]="clientFormGroup">
         <div class="form-container">
@@ -32,10 +35,6 @@
                     <input matInput readonly formControlName="status">
                 </mat-form-field>
                 <mat-form-field appearance="fill">
-                    <mat-label>Status</mat-label>
-                    <input matInput readonly formControlName="status">
-                </mat-form-field>
-                <mat-form-field appearance="fill">
                     <mat-label>Recent</mat-label>
                     <input matInput readonly formControlName="recent">
                 </mat-form-field>
@@ -43,8 +42,15 @@
         </div>
       </form>
 </mat-dialog-content>
+</div>
+<div *ngIf="showEstimate">
+    <app-edit-estimate></app-edit-estimate>
+</div>
 <mat-dialog-actions align="end">
     <button mat-raised-button mat-dialog-close class="delete-button" color="warn" (click)="delete()">Delete</button>
+    <button *ngIf="data.client.Status == 'Lead' && !showEstimate" mat-raised-button color="primary" cdkFocusInitial (click)="scheduleEstimate()">Schedule Estimate</button>
+    <button *ngIf="data.client.Status == 'Estimate'" mat-raised-button [mat-dialog-close]="true" color="primary" cdkFocusInitial (click)="modify()">Approve Job</button>
+    <button *ngIf="data.client.Status == 'Estimate'" mat-raised-button [mat-dialog-close]="true" color="primary" cdkFocusInitial (click)="modify()">Reject Job</button>
     <button mat-button mat-dialog-close>Cancel</button>
     <button mat-raised-button [mat-dialog-close]="true" color="primary" cdkFocusInitial (click)="modify()">Save</button>
 </mat-dialog-actions>

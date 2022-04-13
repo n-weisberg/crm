@@ -32,6 +32,12 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmDeleteClientDialog, EditClientComponent } from './clients/edit-client/edit-client.component';
 import { CdkStepperModule } from '@angular/cdk/stepper';
+import { EditEstimateComponent } from './clients/edit-estimate/edit-estimate.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+
 
 @NgModule({
   declarations: [
@@ -44,6 +50,7 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     ScheduleComponent,
     EditClientComponent,
     ConfirmDeleteClientDialog,
+    EditEstimateComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +79,10 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     }),
     NgbModalModule,
     HttpClientModule,
-    CdkStepperModule
+    CdkStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

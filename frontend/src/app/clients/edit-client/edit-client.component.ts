@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { take } from 'rxjs';
-import { Client, ClientsService } from '../clients.service';
+import { Client, ClientsService, Estimate } from '../clients.service';
 
 @Component({
   selector: 'app-edit-client',
@@ -10,6 +10,11 @@ import { Client, ClientsService } from '../clients.service';
   styleUrls: ['./edit-client.component.scss']
 })
 export class EditClientComponent {
+
+  showEstimate = false;
+
+  blankEstimate: Estimate = {}
+
   clientFormGroup: FormGroup = new FormGroup({
     name: new FormControl(this.data.client.Name),
     phone: new FormControl(this.data.client.Phone),
@@ -39,6 +44,11 @@ export class EditClientComponent {
       // didn't work
     }
     return true;
+  }
+
+  scheduleEstimate() {
+    this.showEstimate = true;
+
   }
 
   delete() {
