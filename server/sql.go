@@ -8,7 +8,7 @@ import (
 )
 
 func getClients() (*sql.Rows, error) {
-	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/crm")
+	db, err := sql.Open("mysql", "root:password@tcp(34.67.34.240:3306)/crm")
 	if err != nil {
 		fmt.Println(err)
 	} else {
